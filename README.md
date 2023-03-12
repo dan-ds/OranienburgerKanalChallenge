@@ -6,4 +6,6 @@ Have all files in the same folder.
 Have python 3 installed.
 Double click on OranienburgerKanalChallengeGenerator.bat
 
+Can work on android phone.
+
 Can work in other operating systems if you know python.
