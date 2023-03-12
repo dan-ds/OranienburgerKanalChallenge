@@ -3,7 +3,7 @@ import random
 forbiddenList = {'B':33, 'D':55}
 
 inputDeck = 'A' #Input deck defaults to A
-allDecksList = ['A','B','C','D','E','F','Z']
+allDecksList = ['A','B','C','D','E','F','M']
 allCardsList = list(range(1,61))
 # NOTE: don't use [x]*y with nested lists.
 allCardsListDrawn = {	'A':[False] * 60,
@@ -42,18 +42,18 @@ def drawCard(mydeck, mymin, mymax):
 
 def chooseNextDeck(mydeck):
 	newDeck = ''
-	# If deck is not Z, return same deck
-	if mydeck != 'Z':
+	# If deck is not M, return same deck
+	if mydeck != 'M':
 		return mydeck
-	# If deck is Z, then return a non-Z deck
+	# If deck is M, then return a non-M deck
 	else:
-		while newDeck == '' or newDeck == 'Z':
+		while newDeck == '' or newDeck == 'M':
 			newDeck = random.choice(allDecksList)
 		return newDeck
 
 print ("Oranienburger Kanal - Challenge Generator")
 while (True):
-	inputDeck = input('Type the letter of the deck you want to use (A, B, C, D, E, F) in CAPS\nor Z if you want to mix all decks\nand then press enter: ')
+	inputDeck = input('Type the letter of the deck you want to use (A, B, C, D, E, F) in CAPS\nor M if you want to mix all decks\nand then press enter: ')
 	if inputDeck in allDecksList:
 		break
 
@@ -113,17 +113,20 @@ R6Cards += oneCard(41,60)
 
 print ('Setup the following cards: '+setupCards)
 input('Press enter when you are at the end of Round 1')
-print ('Add the following cards: '+R1Cards)
+print ('Add the following cards: '+R1Cards+'. Also unblock top of 2nd action space (beneath green cards).')
 input('Press enter when you are at the end of Round 2')
 print ('Add the following cards: '+R2Cards)
 input('Press enter when you are at the end of Round 3')
-print ('Add the following cards: '+R3Cards)
+print ('Add the following cards: '+R3Cards+'. Also unblock top of 3rd action space (beneath orange cards).')
 input('Press enter when you are at the end of Round 4')
 print ('Add the following cards: '+R4Cards)
 input('Press enter when you are at the end of Round 5')
 print ('Add the following cards: '+R5Cards)
 input('Press enter when you are at the end of Round 6')
-print ('Add the following cards: '+R6Cards)
+print ('Add the following cards: '+R6Cards+'. Also unblock top of 4th action space (beneath blue cards).')
+input('Press enter when you are at the end of Round 7')
+print ('Remember you have one free last turn of the wheel.')
+input('Press enter to view BGG string')
 print('----------------------------------------------------------------------')
 print('This is the text to copy to BGG:')
 print('----------------------------------------------------------------------')
@@ -136,10 +139,11 @@ wallOfText += '-First, search setup cards (these are already ordered). Then, for
 wallOfText += '-Post score for first blind playthrough.\n\n'
 wallOfText += 'This month uses deck '+inputDeck+'.\n\n'
 wallOfText += 'Setup cards: [o]'+setupCards+'[/o]\n\n'
-wallOfText += 'End of Round 1: [o]'+R1Cards+'[/o] Also unblock top of 2nd action space. Order cards in the river.\n\n'
+wallOfText += 'End of Round 1: [o]'+R1Cards+'[/o] Also unblock top of 2nd action space (beneath green cards). Order cards in the river.\n\n'
 wallOfText += 'End of Round 2: [o]'+R2Cards+'[/o] Order cards in the river.\n\n'
-wallOfText += 'End of Round 3: [o]'+R3Cards+'[/o] Also unblock top of 3rd action space. Order cards in the river.\n\n'
+wallOfText += 'End of Round 3: [o]'+R3Cards+'[/o] Also unblock top of 3rd action space (beneath orange cards). Order cards in the river.\n\n'
 wallOfText += 'End of Round 4: [o]'+R4Cards+'[/o] Order cards in the river.\n\n'
 wallOfText += 'End of Round 5: [o]'+R5Cards+'[/o] Order cards in the river.\n\n'
-wallOfText += 'End of Round 6: [o]'+R6Cards+'[/o] Also unblock top of 4th action space. Order cards in the river.'
+wallOfText += 'End of Round 6: [o]'+R6Cards+'[/o] Also unblock top of 4th action space (beneath blue cards). Order cards in the river.\n\n'
+wallOfText += 'End of Round 7: Remember that you can do one last free turn of the resource wheel. Submit your score!'
 print(wallOfText)
